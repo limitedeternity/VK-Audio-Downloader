@@ -14,8 +14,10 @@ Freaking huge utility that downloads music from your VK page.
 
 ## How-to
 
-1) Run `start.sh` (or execute command within this file)
+1) Close every program that intensively uses network.
 
-2) Follow instructions in console
+2) Run `start.sh` (or execute command from this file)
 
-3) Wait... Just wait...
+3) Follow instructions in console
+
+4) Wait... Just wait...
