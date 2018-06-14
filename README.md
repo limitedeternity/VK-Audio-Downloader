@@ -6,7 +6,7 @@ Freaking huge utility that downloads music from your VK page.
 
 - `Python 3.6+`
 
-- Correctly configured `MITMProxy` with certificates installed
+- [Correctly configured](https://docs.mitmproxy.org/stable/overview-installation/) `MITMProxy` with certificates installed
 
 - `pip install -r requirements.txt`
 
