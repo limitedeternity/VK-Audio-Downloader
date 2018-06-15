@@ -8,7 +8,7 @@ Freaking huge utility that downloads music from your VK page.
 
 - `Chrome 66+`
 
-- [Correctly configured](https://docs.mitmproxy.org/stable/overview-installation/) `MITMProxy` with certificates installed
+- [Correctly configured](https://docs.mitmproxy.org/stable/overview-installation/) `MITMProxy` with [certificates installed](https://docs.mitmproxy.org/stable/concepts-certificates/)
 
 - `pip install -r requirements.txt`
 
