@@ -23,6 +23,7 @@ class Controller:
         options.add_argument("user-data-dir=" + path.abspath(path.join(getcwd(), "data")))
 
         self.driver = webdriver.Chrome(executable_path=driver_location, chrome_options=options)
+        self.is_switched = True
 
     def start(self):
         self.driver.get("about:blank")
@@ -46,8 +47,10 @@ class Controller:
         return track_names
 
     def switch_track(self):
-        is_switched = self.driver.execute_script(open('jsModules/switchTrack.js').read())
-        return is_switched
+        if self.is_switched:
+            self.is_switched = self.driver.execute_script(open('jsModules/switchTrack.js').read())
+
+        return self.is_switched
 
     def restore_track_position(self, position):
         self.driver.execute_script("window.__noPlayback = true;")

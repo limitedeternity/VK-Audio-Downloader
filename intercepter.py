@@ -1,7 +1,6 @@
 from re import sub
 import fnmatch
 from os import path, getcwd, listdir
-from time import sleep
 from multiprocessing import Pool
 from mitmproxy import http, ctx
 from mitmproxy.proxy import protocol
@@ -35,13 +34,12 @@ class Intercepter:
             if flow.request.pretty_host.endswith("vkuseraudio.net") and ".mp3?extra=" in flow.request.path:
                 self.downloadQueue.append((flow.request.url, self.trackList[self.linkAmount]))
                 self.linkAmount += 1
-                ctx.log(f"\n[00000] Got a link: {flow.request.url}. Stats: {self.linkAmount} / {len(self.trackList) - 1}\n")
+                ctx.log(f"\n[00000] Got a link: {flow.request.url}. Stats: {self.linkAmount} / {len(self.trackList)}\n")
 
                 if len(self.downloadQueue) >= 15:
                     self.initiate_download()
                     self.downloadQueue = []
 
-                sleep(1)
                 self.controller.switch_track()
 
         if self.linkAmount == len(self.trackList):
@@ -50,7 +48,7 @@ class Intercepter:
                 self.downloadQueue = []
 
             self.finish()
-            flow.kill(ctx.master)
+            ctx.master.shutdown()
 
     def restore_state(self):
         if path.exists(path.join(getcwd(), "audios")):
