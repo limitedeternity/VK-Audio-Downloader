@@ -15,7 +15,6 @@ audioList = Array.from(
 .filter(el => ! Array.from(el.classList).includes("audio_claimed"));
 
 window.__audioIterator = createIterator(audioList);
-document.querySelector(".audio_page_player_btn.audio_page_player_repeat").click();
 
 var nameList = [];
 
