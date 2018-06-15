@@ -47,6 +47,8 @@ class Intercepter:
                 self.controller.switch_track()
 
         if self.linkAmount == len(self.trackList):
+            self.linkAmount += 1
+            
             if len(self.downloadQueue) != 0:
                 self.initiate_download()
                 self.downloadQueue = []
