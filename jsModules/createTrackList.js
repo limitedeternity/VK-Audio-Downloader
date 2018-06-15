@@ -21,8 +21,24 @@ var nameList = [];
 
 for (let audio of audioList) {
   let textArr = audio.innerText.split("\n").filter(Boolean);
-  let filename = textArr[0] + ' - ' + textArr[1] + ".mp3"
-  nameList.push(filename.replace(/\//g, "").replace(/\\/g, ""));
+  let name = textArr[0] + ' - ' + textArr[1]
+  
+  nameList.push(
+    name
+      .replace(/\//g, "")
+      .replace(/\\/g, "")
+      .replace(/\|/g, "")
+      .replace(/\?/g, "")
+      .replace(/\*/g, "")
+      .replace(/:/g, "")
+      .replace(/</g, "")
+      .replace(/>/g, "")
+      .replace(/"/g, "")
+      .replace(/'/g, "")
+      .replace(/\.$/, "")
+      .replace(/ $/g, "")
+     + ".mp3"
+  );
 }
 
 return nameList;
