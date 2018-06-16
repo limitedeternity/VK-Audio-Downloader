@@ -52,12 +52,5 @@ class Controller:
 
         return self.is_switched
 
-    def restore_track_position(self, position):
-        self.driver.execute_script("window.__noPlayback = true;")
-        for _ in range(position):
-            self.switch_track()
-
-        self.driver.execute_script("window.__noPlayback = false;")
-
     def finish(self):
         self.driver.quit()

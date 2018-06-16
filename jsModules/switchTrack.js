@@ -1,6 +1,6 @@
 var element = window.__audioIterator.next();
 
-if (element && !window.__noPlayback) {
+if (element) {
   element.click();
   return true;
 

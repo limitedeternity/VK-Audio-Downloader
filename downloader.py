@@ -14,7 +14,7 @@ class Downloader:
     def download(self, queue):
         ( url, name ) = queue
         dest = path.join(getcwd(), "audios", name)
-        print("\n[00000] Downloading {0} -> {1}\n".format(url, dest))
+        print("\n[00000] Downloading {0} -> {1}".format(name, dest))
 
         response = self.session.get(url, stream=True)
         with open(dest, "wb") as file:

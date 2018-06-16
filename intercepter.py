@@ -1,9 +1,8 @@
 from re import sub
 import fnmatch
 from os import path, getcwd, listdir
-from sys import exit
 from multiprocessing import Pool
-from mitmproxy import http, ctx
+from mitmproxy import http
 from mitmproxy.proxy import protocol
 
 from downloader import Downloader
@@ -36,9 +35,13 @@ class Intercepter:
     def request(self, flow: http.HTTPFlow):
         if flow.request.pretty_host.endswith("vkuseraudio.net") and ".mp3?extra=" in flow.request.path:
             if self.linkAmount < len(self.trackList):
-                self.downloadQueue.append((flow.request.url, self.trackList[self.linkAmount]))
+                link = flow.request.url
+                name = self.trackList[self.linkAmount]
+
+                self.downloadQueue.append((link, name))
                 self.linkAmount += 1
-                ctx.log(f"\n[00000] Got a link: {flow.request.url}. Stats: {self.linkAmount} / {len(self.trackList)}\n")
+
+                self.log_entry(name)
 
                 if len(self.downloadQueue) >= 15:
                     self.initiate_download()
@@ -54,13 +57,17 @@ class Intercepter:
                     self.downloadQueue = []
 
                 self.finish()
-                exit(0)
+
+    def log_entry(self, name):
+        print(f"\n[00000] Got audio: {name}. Stats: {self.linkAmount} / {len(self.trackList)}")
 
     def restore_state(self):
         if path.exists(path.join(getcwd(), "audios")):
-            self.linkAmount = len(fnmatch.filter(listdir(path.join(getcwd(), "audios")), '*.mp3'))
-            if self.linkAmount > 0:
-                self.controller.restore_track_position(self.linkAmount)
+            tmpLinkAmount = len(fnmatch.filter(listdir(path.join(getcwd(), "audios")), '*.mp3')) - 1
+            if tmpLinkAmount > 0:
+                self.linkAmount = tmpLinkAmount
+                for _ in range(0, self.linkAmount):
+                    self.controller.switch_track()
 
     def initiate_download(self):
         pool = Pool()
@@ -69,7 +76,9 @@ class Intercepter:
         pool.join()
 
     def finish(self):
+        self.controller.finish()
         print("Cleaning up...\n")
+
         self.downloader.cleanup()
         print("My job is done here.\n")
 
