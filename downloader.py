@@ -1,7 +1,7 @@
 from shutil import copyfileobj, rmtree
 from os import getcwd, path, listdir, makedirs
 from requests import Session
-import zipfile
+from zipfile import ZipFile, ZIP_DEFLATED
 
 
 class Downloader:
@@ -32,7 +32,7 @@ class Downloader:
             chunks.append(zip_list[item:item + 1000])
 
         for index, chunk in enumerate(chunks):
-            with zipfile.ZipFile("Audios" + '-' + str(index) + '.zip', 'w', zipfile.ZIP_DEFLATED) as zip:
+            with ZipFile("Audios" + '-' + str(index) + '.zip', 'w', ZIP_DEFLATED) as zip:
                 for file in chunk:
                     zip.write(path.join(getcwd(), "audios", file), file)
 

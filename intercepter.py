@@ -1,5 +1,5 @@
 from re import sub
-import fnmatch
+from fnmatch import filter as fnfilter
 from os import path, getcwd, listdir
 from multiprocessing import Pool
 from mitmproxy import http
@@ -63,7 +63,7 @@ class Intercepter:
 
     def restore_state(self):
         if path.exists(path.join(getcwd(), "audios")):
-            tmpLinkAmount = len(fnmatch.filter(listdir(path.join(getcwd(), "audios")), '*.mp3')) - 1
+            tmpLinkAmount = len(fnfilter(listdir(path.join(getcwd(), "audios")), '*.mp3')) - 1
             if tmpLinkAmount > 0:
                 self.linkAmount = tmpLinkAmount
                 for _ in range(0, self.linkAmount):
