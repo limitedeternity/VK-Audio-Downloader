@@ -28,14 +28,18 @@ class Controller:
     def start(self):
         self.driver.get("about:blank")
         self.driver.switch_to.window(self.driver.window_handles[0])
-        self.driver.get("https://vk.com/")
 
-    def get_audio(self):
-        while not match(r"^https:\/\/vk\.com\/audios(.*)", self.driver.current_url):
+        print("\nLogin...\n")
+        self.driver.get("https://vk.com/al_audio.php")
+
+        while not match(r"^https:\/\/vk\.com\/al_audio\.php$", self.driver.current_url):
             sleep(1)
 
+        print("Done!\n")
+
+    def get_audio(self):
         self.driver.execute_script(open('jsModules/scrollDown.js').read())
-        WebDriverWait(self.driver, 99999).until(
+        WebDriverWait(self.driver, 10000).until(
              EC.alert_is_present()
         )
 

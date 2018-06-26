@@ -15,7 +15,6 @@ class Intercepter:
 
         self.controller = Controller()
         self.controller.start()
-        print("\nNavigate to audios page\n")
 
         self.proxyConnectionDetected = False
         self.trackList = self.controller.get_audio()
