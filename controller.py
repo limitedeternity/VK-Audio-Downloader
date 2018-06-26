@@ -39,6 +39,8 @@ class Controller:
 
     def get_audio(self):
         self.driver.execute_script(open('jsModules/scrollDown.js').read())
+
+        # Wait 10k seconds until finished
         WebDriverWait(self.driver, 10000).until(
              EC.alert_is_present()
         )
