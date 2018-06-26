@@ -35,7 +35,7 @@ class Controller:
             sleep(1)
 
         self.driver.execute_script(open('jsModules/scrollDown.js').read())
-        WebDriverWait(self.driver, 9999).until(
+        WebDriverWait(self.driver, 99999).until(
              EC.alert_is_present()
         )
 
