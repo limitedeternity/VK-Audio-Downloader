@@ -7,11 +7,11 @@ const progress = require("request-progress");
 
 const download = ({ link, fname }) => {
     return new Promise(resolve => {
-	      let destination = path.join(process.cwd(), 'Music', fname);
+        let destination = path.join(process.cwd(), 'Music', fname);
 
-    	  progress(request(link))
-	          .on('end', () => resolve(true))
-    	      .pipe(fs.createWriteStream(destination));
+        progress(request(link))
+            .on('end', () => resolve(true))
+            .pipe(fs.createWriteStream(destination));
 
         console.log(chalk.green('::: ->') + ` ${destination}\n`);
     });
@@ -60,15 +60,15 @@ const download = ({ link, fname }) => {
             var nextIndex = 0;
 
             return {
-               next() {
-                 return nextIndex < array.length ? array[nextIndex++] : false
-               }
+                next() {
+                    return nextIndex < array.length ? array[nextIndex++] : false
+                }
             };
         }
 
         let audioList = Array.from(
-          document.querySelector('div.audio_page__audio_rows_list._audio_page__audio_rows_list._audio_pl.audio_w_covers.audio_owner_list_canedit')
-          .childNodes
+            document.querySelector('div.audio_page__audio_rows_list._audio_page__audio_rows_list._audio_pl.audio_w_covers.audio_owner_list_canedit')
+            .childNodes
         )
         .filter(el => ! Array.from(el.classList).includes("audio_claimed"));
 
@@ -81,7 +81,7 @@ const download = ({ link, fname }) => {
             let name = textArr[0] + ' - ' + textArr[1]
 
             nameList.push(
-              name
+                name
                 .replace(/\//g, "")
                 .replace(/\\/g, "")
                 .replace(/\|/g, "")
@@ -94,7 +94,7 @@ const download = ({ link, fname }) => {
                 .replace(/'/g, "")
                 .replace(/\.$/, "")
                 .replace(/ $/g, "")
-               + ".mp3"
+                + ".mp3"
             );
         }
 
@@ -111,7 +111,7 @@ const download = ({ link, fname }) => {
             await download({ link: req.url(), fname: nameList[position] });
             position++;
 
-	          await page.evaluate(() => {
+            await page.evaluate(() => {
                 let element = window.__audioIterator.next();
 
                 if (element) {
