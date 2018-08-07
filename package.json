@@ -1,0 +1,31 @@
+{
+  "name": "vk-audio-downloader",
+  "version": "1.0.0",
+  "description": "VK Audio Downloader",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limitedeternity/VK-Audio-Downloader.git"
+  },
+  "keywords": [
+    "vk",
+    "download",
+    "audio",
+    "script"
+  ],
+  "author": "@limitedeternity",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/limitedeternity/VK-Audio-Downloader/issues"
+  },
+  "homepage": "https://github.com/limitedeternity/VK-Audio-Downloader#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "puppeteer": "^1.6.1",
+    "request": "^2.87.0",
+    "request-progress": "^3.0.0"
+  }
+}

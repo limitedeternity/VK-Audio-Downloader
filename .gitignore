@@ -1,4 +1,4 @@
-data/
-__pycache__/
-audios/
+node_modules/
+tmp/
+Music/*.mp3
 *.zip

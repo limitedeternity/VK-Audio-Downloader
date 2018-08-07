@@ -1,23 +1,19 @@
 # VK-Audio-Downloader
 
-Freaking huge utility that downloads music from your VK page.
+An utility that downloads music from VK community/user page.
 
-## Requirements
+## Requirements:
 
-- `Python 3.6+`
+- `Node 10+`
 
 - `Chrome 66+`
 
-- [Correctly configured](https://docs.mitmproxy.org/stable/overview-installation/) `MITMProxy` with [certificates installed](https://docs.mitmproxy.org/stable/concepts-certificates/)
+## How-to:
 
-- `pip install -r requirements.txt`
+1) `npm ci`
 
-## How-to
+2) `npm start`
 
-1) Close every program that intensively uses network.
-
-2) Run `start.sh` (or execute command from this file)
-
-3) Follow instructions in console
+3) Navigate to audio page
 
 4) Wait... Just wait...
