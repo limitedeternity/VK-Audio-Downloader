@@ -115,11 +115,8 @@ const download = ({ link, fname }) => {
                 let element = window.__audioIterator.next();
 
                 if (element) {
-                    element.click();
-                    return false;
-
-                } else {
-                    return true;
+                    let evt = new Event("click");
+                    element.dispatchEvent(evt);
                 }
             });
         }
@@ -131,11 +128,8 @@ const download = ({ link, fname }) => {
         let element = window.__audioIterator.next();
 
         if (element) {
-            element.click();
-            return false;
-
-        } else {
-            return true;
+            let evt = new Event("click");
+            element.dispatchEvent(evt);
         }
     });
 })();
