@@ -21,7 +21,7 @@ var nameList = [];
 for (let audio of audioList) {
   let textArr = audio.innerText.split("\n").filter(Boolean);
   let name = textArr[0] + ' - ' + textArr[1]
-  
+
   nameList.push(
     name
       .replace(/\//g, "")
@@ -35,7 +35,7 @@ for (let audio of audioList) {
       .replace(/"/g, "")
       .replace(/'/g, "")
       .replace(/\.$/, "")
-      .replace(/ $/g, "")
+      .replace(/ $/, "")
      + ".mp3"
   );
 }

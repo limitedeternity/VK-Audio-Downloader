@@ -2,3 +2,6 @@ data/
 __pycache__/
 audios/
 *.zip
+node_modules/
+tmp/
+Music/*.mp3

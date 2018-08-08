@@ -6,7 +6,7 @@ return new Promise(resolve => {
             return resolve(true);
         }
         offset = window.pageYOffset;
-        scrolldelay = setTimeout(pageScroll, 50);
+        setTimeout(pageScroll, 50);
     };
     pageScroll();
 
