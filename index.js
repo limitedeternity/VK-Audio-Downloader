@@ -93,7 +93,7 @@ const download = ({ link, fname }) => {
                 .replace(/"/g, "")
                 .replace(/'/g, "")
                 .replace(/\.$/, "")
-                .replace(/ $/g, "")
+                .replace(/ $/, "")
                 + ".mp3"
             );
         }
