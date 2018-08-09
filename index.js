@@ -6,10 +6,11 @@ const request = require("request");
 const progress = require("request-progress");
 
 const download = ({ link, fname }) => {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         let destination = path.join(process.cwd(), 'Music', fname);
 
         progress(request(link))
+            .on('error', err => reject(err))
             .on('end', () => resolve(true))
             .pipe(fs.createWriteStream(destination));
 
