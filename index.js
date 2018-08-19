@@ -109,9 +109,7 @@ const download = ({ link, fname }) => {
         req.continue();
 
         if (new URL(req.url()).host.includes("vkuseraudio.net") && new URL(req.url()).pathname.includes(".mp3")) {
-            await download({ link: req.url(), fname: nameList[position] });
-            position++;
-
+            await download({ link: req.url(), fname: nameList[position++] });
             await page.evaluate(() => {
                 let element = window.__audioIterator.next();
 
