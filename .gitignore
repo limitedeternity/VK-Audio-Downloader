@@ -1,7 +1,9 @@
+.DS_Store
 data/
 __pycache__/
 audios/
 *.zip
 node_modules/
 tmp/
+Music/*.m3u
 Music/*.mp3
